@@ -45,4 +45,26 @@
    * TCP/IP 연결을 계속 새로 맺어야하는 단점이 있음
    * HTTP 지속연결(Persisten Connections)로 문제 해결
  * HTTP메시지
- * 
+
+## HTTP 메서드
+* API URI는 리소스를 URI에 매핑 (/member)로해서 get,post,put,delete...
+* GET:리소스 조회
+* POST:요청 데이터 처리, 주로 등록
+* PUT:리소스를 대체, 해당 리소스가 없으면 생성
+  * POST와 차이점은 PUT은 리소스 위치를 알고 URI 지정
+  * ex) PUT /member/{id}
+* PATCH: 리소스 부분 변경
+  * PUT과 차이점은 PUT은 하나만 바꿔도 전체가 다 바뀐다.
+  * EX)PUT : name,age를 가진 객체에 age만 바꾸면 name초기화된다
+  *    patch: name,age를 가진 객체에 age만 바꾸면 age만 바뀐다
+* DELETE: 리소스 삭제
+
+## HTTP 메서드 속성
+* 안전(Safe Methods)
+  *  호출해도 리소스를 변경하지 않는다
+* 멱등(Idempotent Methods)
+  * 한번 호출하든 두번 호출하든 100번 호출하든 결과가 똑같다.
+  * GET,PUT,DELETE /// POST(결제)는 아님
+  * 자동 복구 메커니즘에 활용
+* 캐시가능(Cacheable Methods)
+  * 주로 GET,정도만 캐시로 사용
